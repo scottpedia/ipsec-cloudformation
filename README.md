@@ -94,7 +94,8 @@ You may choose an AWS region using the selector to the right of your account inf
 ## License 
 
 Copyright (C) 2020-2022 [S. X. Liang](https://github.com/scottpedia/) \<scott.liang@pm.me\> and [Lin Song](https://github.com/hwdsl2/).  
-Based on [the work of Lin Song](https://github.com/hwdsl2/setup-ipsec-vpn/)(Copyright 2022)
+Based on [the work of Lin Song](https://github.com/hwdsl2/setup-ipsec-vpn/)(Copyright 2022)   
+For formal commit logs of this piece of work, please refer to the original github repository [here](https://github.com/hwdsl2/setup-ipsec-vpn/commits/e1060fdbbe271c79b2f3445c2b5895c046147090/aws).
 
 [![Creative Commons License](images/CC-by-sa.png)](http://creativecommons.org/licenses/by-sa/3.0/)
 
