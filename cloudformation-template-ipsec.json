@@ -803,7 +803,6 @@
             "AllowedValues": [
                 "Ubuntu2004",
                 "Ubuntu1804",
-                "Ubuntu2204",
                 "Debian9",
                 "CentOS7",
                 "AmazonLinux2"
