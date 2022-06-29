@@ -78,7 +78,7 @@ You may choose an AWS region using the selector to the right of your account inf
   Example command to login to your EC2 instance using SSH:
   ```bash
   $ ssh -i path/to/your/key-file.pem instance-username@instance-ip-address
-  ```
+  ```   
 
 <br><br>
 
