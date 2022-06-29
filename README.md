@@ -28,16 +28,19 @@ Click the icon below to start:
 
 [![Launch stack](images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new)
 
-<img src="images/upload-the-template.png" align="left" style="max-width: 50%" alt="Upload the template" title="Upload the template">
-<img src="images/specify-parameters.png" align="right" style="max-width: 50%" alt="Specify parameters" title="Specify parameters">
-
-<img src="images/confirm-iam.png" align="middle" style="max-width: 50%" alt="Confirm IAM" title="Confirm IAM">
-
 You may choose an AWS region using the selector to the right of your account information on the navigation bar. After you click "create stack" in the final step, please wait for the stack creation and VPN setup to complete, which may take up to 15 minutes. As soon as the stack's status changes to **"CREATE_COMPLETE"**, you are ready to connect to the VPN server. Click the **Outputs** tab to view your VPN login details. Then continue to [Next steps: Configure VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn#next-steps)(by hwdsl2).
 
 > **Note:** Client configuration files for IKEv2 mode can be found in the `/root` folder of your VPN server. To connect to the VPN server using SSH, refer to the FAQs section below.
 
 > **Note:** If you delete a CloudFormation stack deployed using this template, the key pair that was added during deployment won't be automatically cleaned up. To manage your key pairs, go to EC2 console -> Key Pairs.
+
+## Screenshots
+
+<img href="images/upload-the-template.png" src="images/upload-the-template.png" alt="Upload the template" title="Upload the template" align="left" width="45%">
+
+<img href="images/specify-parameters.png" src="images/specify-parameters.png" alt="Specify parameters" title="Specify parameters" align="right" width="45%">
+
+<p align="center"><img href="images/confirm-iam.png" src="images/confirm-iam.png" alt="Confirm IAM" title="Confirm IAM" width="45%"></p>
 
 ## FAQs
 
@@ -62,9 +65,11 @@ You may choose an AWS region using the selector to the right of your account inf
   You will need to save the private key from the **Outputs** tab to a file on your computer, if you want to access the VPN server via SSH.
 
   > **Note:** You may need to format the private key by replacing all spaces with newlines, before saving to a file. The file will need to be set with [proper permissions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-private-key) before using.
-
-  ![Show key](images/show-key.png)
-
+  
+  <p width="100%">
+  <img href="images/show-key.png" src="images/show-key.png" width="45%" align="left" alt="Show key" title="Show key" style="display: block">   
+  </p>
+  
   To apply proper permissions to your private key file, run the following command under the directory where the file is located:
   ```bash
   $ sudo chmod 400 key-file.pem
@@ -74,6 +79,8 @@ You may choose an AWS region using the selector to the right of your account inf
   ```bash
   $ ssh -i path/to/your/key-file.pem instance-username@instance-ip-address
   ```
+
+<br><br>
 
 ## License 
 
