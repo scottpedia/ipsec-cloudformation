@@ -24,13 +24,14 @@ Make sure to deploy this template with an **AWS Account Root User** or an **IAM 
 
 Right-click this [**template link**](https://raw.githubusercontent.com/scottpedia/ipsec-cloudformation/master/cloudformation-template-ipsec.json) and save as a file on your computer. Then upload it as the template source in the [stack creation wizard](https://console.aws.amazon.com/cloudformation/home#/stacks/new). Continue creating the stack, and in the final step make sure to confirm that this template may create IAM resources.
 
-![Upload the template](images/upload-the-template.png)
-![Specify parameters](images/specify-parameters.png)
-![Confirm IAM](images/confirm-iam.png)
-
 Click the icon below to start:
 
 [![Launch stack](images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new)
+
+<img src="images/upload-the-template.png" align="left" style="max-width: 50%" alt="Upload the template" title="Upload the template">
+<img src="images/specify-parameters.png" align="right" style="max-width: 50%" alt="Specify parameters" title="Specify parameters">
+
+<img src="images/confirm-iam.png" align="middle" style="max-width: 50%" alt="Confirm IAM" title="Confirm IAM">
 
 You may choose an AWS region using the selector to the right of your account information on the navigation bar. After you click "create stack" in the final step, please wait for the stack creation and VPN setup to complete, which may take up to 15 minutes. As soon as the stack's status changes to **"CREATE_COMPLETE"**, you are ready to connect to the VPN server. Click the **Outputs** tab to view your VPN login details. Then continue to [Next steps: Configure VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn#next-steps)(by hwdsl2).
 
