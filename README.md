@@ -1,6 +1,10 @@
-# Deploy to Amazon EC2 using CloudFormation
+# IPsec VPN Cloudformation Deployment Template
+
+> ## **Note:** This project depends on [`setup-ipsec-vpn`](https://github.com/hwdsl2/setup-ipsec-vpn) by [hwdsl2](https://github.com/hwdsl2/).
 
 *Read this in other languages: [English](README.md), [简体中文](README-zh.md).*
+
+## Overview
 
 This template will create a fully-working IPsec VPN server on Amazon Elastic Compute Cloud (Amazon EC2). Please make sure to check the EC2 [pricing details](https://aws.amazon.com/ec2/pricing/on-demand/) before continuing. Using a `t2.micro` server instance for your deployment may qualify for the [AWS Free Tier](https://aws.amazon.com/free/).
 
@@ -18,23 +22,17 @@ Available customization parameters:
 
 Make sure to deploy this template with an **AWS Account Root User** or an **IAM Account** with **Administrator Access**.
 
-Right-click this [**template link**](https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/aws/cloudformation-template-ipsec.json) and save as a file on your computer. Then upload it as the template source in the [stack creation wizard](https://console.aws.amazon.com/cloudformation/home#/stacks/new). Continue creating the stack, and in the final step make sure to confirm that this template may create IAM resources.
-
-<details>
-<summary>
-Click here to view screenshots
-</summary>
+Right-click this [**template link**](https://raw.githubusercontent.com/scottpedia/ipsec-cloudformation/master/cloudformation-template-ipsec.json) and save as a file on your computer. Then upload it as the template source in the [stack creation wizard](https://console.aws.amazon.com/cloudformation/home#/stacks/new). Continue creating the stack, and in the final step make sure to confirm that this template may create IAM resources.
 
 ![Upload the template](images/upload-the-template.png)
 ![Specify parameters](images/specify-parameters.png)
 ![Confirm IAM](images/confirm-iam.png)
-</details>
 
 Click the icon below to start:
 
 [![Launch stack](images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new)
 
-You may choose an AWS region using the selector to the right of your account information on the navigation bar. After you click "create stack" in the final step, please wait for the stack creation and VPN setup to complete, which may take up to 15 minutes. As soon as the stack's status changes to **"CREATE_COMPLETE"**, you are ready to connect to the VPN server. Click the **Outputs** tab to view your VPN login details. Then continue to [Next steps: Configure VPN Clients](../README.md#next-steps).
+You may choose an AWS region using the selector to the right of your account information on the navigation bar. After you click "create stack" in the final step, please wait for the stack creation and VPN setup to complete, which may take up to 15 minutes. As soon as the stack's status changes to **"CREATE_COMPLETE"**, you are ready to connect to the VPN server. Click the **Outputs** tab to view your VPN login details. Then continue to [Next steps: Configure VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn#next-steps)(by hwdsl2).
 
 > **Note:** Client configuration files for IKEv2 mode can be found in the `/root` folder of your VPN server. To connect to the VPN server using SSH, refer to the FAQs section below.
 
@@ -42,44 +40,46 @@ You may choose an AWS region using the selector to the right of your account inf
 
 ## FAQs
 
-<details>
-<summary>
-How to connect to the server via SSH after deployment?
-</summary>
+- ### **How to connect to the server via SSH after deployment?**
 
-You need to know the username and the private key for your Amazon EC2 instance in order to login to it via SSH.
+  You need to know the username and the private key for your Amazon EC2 instance in order to login to it via SSH.
 
-Each Linux server distribution on EC2 has its own default login username. Password login is disabled by default for new instances, and the use of private keys, or "key pairs", is enforced.
+  Each Linux server distribution on EC2 has its own default login username. Password login is disabled by default for new instances, and the use of private keys, or "key pairs", is enforced.
 
-List of default usernames:
-> **Reference:** [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html)
+  List of default usernames:
+  > **Reference:** [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html)
 
-| Distribution | Default Login Username |
-| --- | --- |
-| Ubuntu (`Ubuntu *.04`) |  `ubuntu` |
-| Debian (`Debian 9`) | `admin` |
-| CentOS (`CenOS 7`) | `centos` |
-| Amazon Linux 2 | `ec2-user` |
+  | Distribution | Default Login Username |
+  | --- | --- |
+  | Ubuntu (`Ubuntu *.04`) |  `ubuntu` |
+  | Debian (`Debian 9`) | `admin` |
+  | CentOS (`CenOS 7`) | `centos` |
+  | Amazon Linux 2 | `ec2-user` |
 
-This template generates a key pair for you during deployment, and the private key will be available as text under the **Outputs** tab after the stack is successfully created.
+  This template generates a key pair for you during deployment, and the private key will be available as text under the **Outputs** tab after the stack is successfully created.
 
-You will need to save the private key from the **Outputs** tab to a file on your computer, if you want to access the VPN server via SSH.
+  You will need to save the private key from the **Outputs** tab to a file on your computer, if you want to access the VPN server via SSH.
 
-> **Note:** You may need to format the private key by replacing all spaces with newlines, before saving to a file. The file will need to be set with [proper permissions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-private-key) before using.
+  > **Note:** You may need to format the private key by replacing all spaces with newlines, before saving to a file. The file will need to be set with [proper permissions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html#connection-prereqs-private-key) before using.
 
-![Show key](images/show-key.png)
+  ![Show key](images/show-key.png)
 
-To apply proper permissions to your private key file, run the following command under the directory where the file is located:
-```bash
-$ sudo chmod 400 key-file.pem
-```
+  To apply proper permissions to your private key file, run the following command under the directory where the file is located:
+  ```bash
+  $ sudo chmod 400 key-file.pem
+  ```
 
-Example command to login to your EC2 instance using SSH:
-```bash
-$ ssh -i path/to/your/key-file.pem instance-username@instance-ip-address
-```
-</details>
+  Example command to login to your EC2 instance using SSH:
+  ```bash
+  $ ssh -i path/to/your/key-file.pem instance-username@instance-ip-address
+  ```
 
-## Author
+## License 
 
-Copyright (C) 2020-2022 [S. X. Liang](https://github.com/scottpedia)
+Copyright (C) 2020-2022 [S. X. Liang](https://github.com/scottpedia/) \<scott.liang@pm.me\> and [Lin Song](https://github.com/hwdsl2/).  
+Based on [the work of Lin Song](https://github.com/hwdsl2/setup-ipsec-vpn/)(Copyright 2022)
+
+[![Creative Commons License](images/CC-by-sa.png)](http://creativecommons.org/licenses/by-sa/3.0/)
+
+This work is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](LICENSE.md)
+Attribution required: please include my name in any derivative and let me know how you have improved it!
