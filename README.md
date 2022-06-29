@@ -2,6 +2,15 @@
 
 > ## **Note:** This project depends on [`setup-ipsec-vpn`](https://github.com/hwdsl2/setup-ipsec-vpn) by [hwdsl2](https://github.com/hwdsl2/).
 
+
+## Table of Contents
+
+* [Overview](#overview)
+* [Start](#start)
+* [Screenshots](#screenshots)
+* [FAQs](#faqs)
+* [License](#license)
+
 ## Overview
 
 This template will create a fully-working IPsec VPN server on Amazon Elastic Compute Cloud (Amazon EC2). Please make sure to check the EC2 [pricing details](https://aws.amazon.com/ec2/pricing/on-demand/) before continuing. Using a `t2.micro` server instance for your deployment may qualify for the [AWS Free Tier](https://aws.amazon.com/free/).
@@ -17,6 +26,8 @@ Available customization parameters:
 - Your VPN IPsec PSK (pre-shared key)
 
 > **Note:** DO NOT use these special characters within values: `\ " '`
+
+## Start
 
 Make sure to deploy this template with an **AWS Account Root User** or an **IAM Account** with **Administrator Access**.
 

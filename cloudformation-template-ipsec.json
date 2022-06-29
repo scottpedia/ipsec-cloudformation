@@ -8,6 +8,9 @@
             "Ubuntu2004": {
                 "HelperInstallationCommands": "export DEBIAN_FRONTEND=noninteractive\napt-get -yq update\napt-get -yq install python3-pip\npython3 -m pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz\n"
             },
+            "Ubuntu2204": {
+                "HelperInstallationCommands": "export DEBIAN_FRONTEND=noninteractive\napt-get -yq update\napt-get -yq install python3-pip\npython3 -m pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz\n"
+            },
             "Debian9": {
                 "HelperInstallationCommands": "export DEBIAN_FRONTEND=noninteractive\napt-get -yq update\napt-get -yq install python3-pip\npython3 -m pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz\n"
             },
@@ -384,7 +387,7 @@
                                     "Ref": "VpnPassword"
                                 },
                                 "'\n",
-                                "wget -t 3 -T 30 -nv -O vpn.sh https://git.io/vpnsetup\n",
+                                "wget -t 3 -T 30 -nv -O vpn.sh https://github.com/hwdsl2/setup-ipsec-vpn/raw/master/vpnsetup.sh\n",
                                 "sh vpn.sh\n",
                                 "cfn-signal -e 0 ",
                                 " --stack ",
@@ -564,7 +567,7 @@
                                 "'''",
                                 "def handler(event, context):",
                                 "   try:",
-                                "       keyName = 'setup-ipsec-vpn-' + ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(10))",
+                                "       keyName = 'ipsec-cloudformation-' + ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(10))",
                                 "       region = event['ResourceProperties']['Region']",
                                 "       ec2 = boto3.client('ec2',region)",
                                 "       response = ec2.create_key_pair(",
@@ -646,6 +649,7 @@
                                 "       AMIName = {",
                                 "           'Ubuntu1804': 'ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*',",
                                 "           'Ubuntu2004': 'ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*',",
+                                "           'Ubuntu2204': 'ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*',",
                                 "           'Debian9': 'debian-stretch-hvm-x86_64-gp2-*',",
                                 "           'CentOS7': 'CentOS 7.9.2009 x86_64',",
                                 "           'AmazonLinux2': 'amzn2-ami-hvm-*.*-x86_64-gp2',",
@@ -799,6 +803,7 @@
             "AllowedValues": [
                 "Ubuntu2004",
                 "Ubuntu1804",
+                "Ubuntu2204",
                 "Debian9",
                 "CentOS7",
                 "AmazonLinux2"
@@ -862,7 +867,7 @@
             }
         },
         "NextStep": {
-            "Description": "Learn how to configure VPN clients.",
+            "Description": "Learn how to configure VPN clients.(content offered by hwdsl2)",
             "Value": "https://github.com/hwdsl2/setup-ipsec-vpn#next-steps"
         }
     }
