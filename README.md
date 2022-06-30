@@ -18,7 +18,7 @@ This template will create a fully-working IPsec VPN server on Amazon Elastic Com
 Available customization parameters:
 
 - Amazon EC2 instance type
-> **Note:** <details><summary>It is possible that not all instance type options offered by this template are available in a specific AWS region.
+> <details><summary><strong>Note:</strong> It is possible that not all instance type options offered by this template are available in a specific AWS region.
 > </summary>
 > 
 > For example, you may not be able to deploy an `m5a.large` instance in `ap-east-1` (hypothetically). In that case, you might experience the following error during deployment: `The requested configuration is currently not supported. Please check the documentation for supported configurations`. Newly released regions are more prone to having this problem as there are less variety of instances. For more info about instance type availability, refer to [https://instances.vantage.sh/](https://instances.vantage.sh/).</details>
@@ -38,7 +38,7 @@ Right-click this [**template link**](https://raw.githubusercontent.com/scottpedi
 
 Click the icon below to start:
 
-[![Launch stack](images/cloudformation-launch-stack-button.png)](https://console.aws.amazon.com/cloudformation/home#/stacks/new)
+<img href="https://console.aws.amazon.com/cloudformation/home#/stacks/new" src="images/cloudformation-launch-stack-button.png" alt="Launch stack" title="Launch stack" height="48px">
 
 You may choose an AWS region using the selector to the right of your account information on the navigation bar. After you click "create stack" in the final step, please wait for the stack creation and VPN setup to complete, which may take up to 15 minutes. As soon as the stack's status changes to **"CREATE_COMPLETE"**, you are ready to connect to the VPN server. Click the **Outputs** tab to view your VPN login details. Then continue to [Next steps: Configure VPN Clients](https://github.com/hwdsl2/setup-ipsec-vpn#next-steps)(by hwdsl2).
 
