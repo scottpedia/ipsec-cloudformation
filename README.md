@@ -46,6 +46,14 @@ You may choose an AWS region using the selector to the right of your account inf
 
 > **Note:** If you delete a CloudFormation stack deployed using this template, the key pair that was added during deployment won't be automatically cleaned up. To manage your key pairs, go to EC2 console -> Key Pairs.
 
+> <details><summary><strong>Note:</strong> You may not be able to deploy as many stacks as you wish <a href="https://docs.aws.amazon.com/general/latest/gr/vpc-service.html#vpc-quotas">because every AWS account comes with a limit on how many VPCs you can have concurrently</a>. For every stack deployed with this template, there will be one VPC used.(expand for details)
+> </summary> 
+> 
+> A fresh AWS account can have up to 5 VPCs concurrently, per AWS region. That means you can have no more than 5 stacks deployed with this template, per AWS region. **However**, you can request to increase the service quotas. To increase the limit on the allowed number of VPCs per region, visit [here](https://console.aws.amazon.com/servicequotas/home/services/vpc/quotas/L-F678F1CE).   
+> If you do proceed deploying more templates without increasing the limit, you may encount the error: `"The maximum number of VPCs has been reached."`.
+</details>
+
+
 ## Screenshots
 
 <img href="images/upload-the-template.png" src="images/upload-the-template.png" alt="Upload the template" title="Upload the template" align="left" width="45%">
