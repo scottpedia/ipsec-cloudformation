@@ -1,7 +1,8 @@
 # IPsec VPN Cloudformation Deployment Template
 
-> ## **Note:** This project depends on [`setup-ipsec-vpn`](https://github.com/hwdsl2/setup-ipsec-vpn) by [hwdsl2](https://github.com/hwdsl2/).
+<a href="https://aws.amazon.com/cloudformation/"><img src="images/cloudformation-logo.png" width="120px" alt="cloudformation logo" title="AWS Cloudformation" align="right"></a>
 
+> ## **Note:** This project depends on [`setup-ipsec-vpn`](https://github.com/hwdsl2/setup-ipsec-vpn) by [hwdsl2](https://github.com/hwdsl2/).
 
 ## Table of Contents
 
